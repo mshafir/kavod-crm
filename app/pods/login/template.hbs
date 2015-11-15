@@ -1,0 +1,26 @@
+<div class="ui grid">
+  <div class="row centered">
+    <img class="ui image" src="/assets/images/big_logo.png">
+  </div>
+</div>
+<div class="ui grid">
+    <div class="four wide column">
+      &nbsp;
+    </div>
+    <div class="eight wide column">
+      <form class="ui form">
+        <div class="field">
+          <label>Username</label>
+          {{input type="text" name="username" placeholder="Username" value=username}}
+        </div>
+        <div class="field">
+          <label>Password</label>
+          {{input type="password" name="password" placeholder="Password" value=password}}
+        </div>
+        <button class="ui button" type="submit" {{action "login"}}>Submit</button>
+        <div class="field">
+          No Account Yet? {{#link-to "signup"}}Sign up{{/link-to}}
+        </div>
+      </form>
+    </div>
+</div>

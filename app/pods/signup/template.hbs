@@ -1,0 +1,38 @@
+<div class="ui grid">
+  <div class="row centered">
+    <img class="ui image" src="/assets/images/big_logo.png">
+  </div>
+</div>
+<div class="ui grid">
+    <div class="four wide column">
+      &nbsp;
+    </div>
+    <div class="eight wide column">
+      <form class="ui form">
+        {{!--<div class="field">
+          <label>Name</label>
+          <div class="two fields">
+            <div class="field">
+              {{input type="text" name="first-name" placeholder="First Name" value=firstname enter="signup"}}
+            </div>
+            <div class="field">
+              {{input type="text" name="last-name" placeholder="Last Name" value=lastname enter="signup"}}
+            </div>
+          </div>
+        </div>--}}
+        <div class="field">
+          <label>Username</label>
+          {{input type="text" name="username" placeholder="Username" value=username enter="signup"}}
+        </div>
+        <div class="field">
+          <label>Email Address</label>
+          {{input type="text" name="email-address" placeholder="Email Address" value=email enter="signup"}}
+        </div>
+        <div class="field">
+          <label>Password</label>
+          {{input type="password" name="password" placeholder="Password" value=password enter="signup"}}
+        </div>
+        <button class="ui button" {{action "signup"}}>Sign Up</button>
+      </form>
+    </div>
+</div>

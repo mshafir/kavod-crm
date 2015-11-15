@@ -1,0 +1,38 @@
+<div class="ui container">
+  <div class="ui menu">
+    {{#link-to "index" class="header item"}}
+      Moishe Kavod House
+    {{/link-to}}
+    {{#link-to "members" class="item"}}
+      Members
+    {{/link-to}}
+    {{#link-to "contributions" class="item"}}
+      Contributions
+    {{/link-to}}
+    {{#link-to "resources" class="item"}}
+      Resources
+    {{/link-to}}
+    {{#link-to "events" class="item"}}
+      Resources
+    {{/link-to}}
+
+    <div class="right menu">
+      {{#if session.isAuthenticated}}
+        <div class="ui dropdown item">
+          {{session.username}} <i class="dropdown icon"></i>
+          <div class="menu">
+            {{#link-to "preferences" class="item"}}Preferences{{/link-to}}
+            <a {{action 'invalidateSession'}}>Logout</a>
+          </div>
+        </div>
+      {{else}}
+        <div class="item">
+          {{#link-to 'login' class="ui primary button"}}Login{{/link-to}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+
+  {{outlet}}
+
+</div>
