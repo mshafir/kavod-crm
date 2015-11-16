@@ -1,34 +1,20 @@
 import Ember from 'ember';
 import Base from 'ember-simple-auth/authenticators/base';
-import ParseAdapter from 'ember-parse-adapter/adapters/application';
+import ApplicationAdapter from '../adapters/application';
 
 const { Promise } = Ember.RSVP;
 
 export default Base.extend({
-  store: Ember.inject.service(),
-  adapter: null,
-
-  init() {
-    this._super();
-    this.adapter = new ParseAdapter();
-  },
-
+  parse: Ember.inject.service(),
   restore(data) {
-    return Ember.RSVP.reject();
+    console.log('resoring session from ', data);
+    this.get('parse').setSession(data.sessionToken);
+    return Ember.RSVP.resolve(data);
   },
-
   authenticate(options) {
-    return new Promise((resolve, reject) => {
-      return this.adapter.ajax(this.adapter.buildURL('login'), 'GET', { data: options }).then((response) => {
-        console.log(response);
-        return resolve(response);
-      }, (response) => {
-        return Ember.RSVP.reject(response.responseJSON);
-      });
-    });
+    return this.get('parse').authenticate(options);
   },
-
-  invalidate(data) {
-    return Ember.RSVP.resolve();
+  invalidate() {
+    return this.get('parse').invalidate();
   }
 });

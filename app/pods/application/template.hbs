@@ -18,11 +18,12 @@
 
     <div class="right menu">
       {{#if session.isAuthenticated}}
+        {{initialize-dropdowns}}
         <div class="ui dropdown item">
-          {{session.username}} <i class="dropdown icon"></i>
+          {{session.session.content.authenticated.username}} <i class="dropdown icon"></i>
           <div class="menu">
             {{#link-to "preferences" class="item"}}Preferences{{/link-to}}
-            <a {{action 'invalidateSession'}}>Logout</a>
+            <a class="item" {{action 'invalidateSession'}}>Logout</a>
           </div>
         </div>
       {{else}}
